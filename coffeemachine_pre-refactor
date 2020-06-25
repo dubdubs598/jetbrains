@@ -1,0 +1,157 @@
+water_count = 400
+milk_count = 540
+beans_count = 120
+cups_count = 9
+cash_count = 550
+
+
+
+on_off = True
+
+
+
+
+
+def machine_status():
+    global water_count, milk_count, beans_count, cups_count, cash_count
+    print('The coffee machine has:')
+    print(water_count, 'of water')
+    print(milk_count, 'of milk')
+    print(beans_count, 'of coffee beans')
+    print(cups_count, 'of disposable cups')
+    print(('$'+str(cash_count)), 'of money')
+    print('')
+
+#machine_status()
+
+
+def buy_espresso():
+    global water_count, beans_count, cups_count, cash_count
+    if water_count < 250:
+        print('Sorry, not enough water!')
+    elif beans_count < 16:
+        print('Sorry, not enough beans!')
+    elif cups_count < 1:
+        print('Sorry, not enough cups!')
+    else:
+        print('I have enough resources, making you a coffee!')
+        water_count = int(water_count) - 250
+        beans_count = int(beans_count) - 16
+        cups_count = int(cups_count) - 1
+        cash_count = int(cash_count) + 4
+
+
+
+
+def buy_latte():
+    global water_count, milk_count, beans_count, cups_count, cash_count
+    if water_count < 350:
+        print('Sorry, not enough water!')
+    elif milk_count < 75:
+        print('Sorry, not enough water!')
+    elif beans_count < 20:
+        print('Sorry, not enough beans!')
+    elif cups_count < 1:
+        print('Sorry, not enough cups!')
+    else:
+        print('I have enough resources, making you a coffee!')
+        water_count = int(water_count) - 350
+        milk_count = int(milk_count) - 75
+        beans_count = int(beans_count) - 20
+        cups_count = int(cups_count) - 1
+        cash_count = int(cash_count) + 7
+
+
+def buy_capp():
+    global water_count, milk_count, beans_count, cups_count, cash_count
+    if water_count < 200:
+        print('Sorry, not enough water!')
+    elif milk_count < 100:
+        print('Sorry, not enough water!')
+    elif beans_count < 12:
+        print('Sorry, not enough beans!')
+    elif cups_count < 1:
+        print('Sorry, not enough cups!')
+    else:
+        print('I have enough resources, making you a coffee!')
+        water_count = int(water_count) - 200
+        milk_count = int(milk_count) - 100
+        beans_count = int(beans_count) - 12
+        cups_count = int(cups_count) - 1
+        cash_count = int(cash_count) + 6
+
+
+def buy_action():
+    print('What do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino, back - to main menu: ')
+    buy_num = input()
+    if buy_num == '1':
+        buy_espresso()
+    if buy_num == '2':
+        buy_latte()
+    if buy_num == '3':
+        buy_capp()
+    if buy_num   == 'back':
+        return
+
+
+def fill_action():
+    print('Write how many ml of water do you want to add: ')
+    global water_count
+    water_count = int(water_count) + int(input())
+    print('Write how many ml of milk do you want to add: ')
+    global milk_count
+    milk_count = int(milk_count) + int(input())
+    print('Write how many grams of coffee beans do you want to add: ')
+    global beans_count
+    beans_count = int(beans_count) + int(input())
+    print('Write how many disposable cups of coffee do you want to add: ')
+    global cups_count
+    cups_count = int(cups_count) + int(input())
+
+
+
+def take_action():
+    global cash_count
+    print('I gave you ', '$'+str(cash_count))
+    cash_count = 0
+
+
+def remain_action():
+    machine_status()
+
+
+def exit_action():
+    on_off = False
+
+
+
+while on_off:
+    print('Write action (buy, fill, take, remaining, exit): ')
+    user_input = input()
+    if user_input == 'buy':
+        buy_action()
+
+
+    if user_input == 'fill':
+        fill_action()
+
+
+    if user_input == 'take':
+        take_action()
+
+    if user_input == 'remaining':
+        remain_action()
+
+    if user_input == 'exit':
+        exit_action()
+        break
+
+#def write_action(buy, fill, take):
+ #   pass
+
+
+#machine_status()
+
+
+#write_action(buy)
+
